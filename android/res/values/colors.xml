@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teal">#FF26786A</color>
+    <color name="teal_dark">#FF1F6B5E</color>
+    <color name="teal_soft">#FFE8F3EF</color>
+    <color name="paper">#FFF7F8FA</color>
+    <color name="ink">#FF20332E</color>
+    <color name="muted">#FF667B73</color>
+    <color name="line">#FFE3E9E6</color>
+</resources>

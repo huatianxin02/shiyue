@@ -1,0 +1,240 @@
+{
+  "name": "shiyue-agent-kit",
+  "version": "1.3.0",
+  "verified_app_version": "1.10.0",
+  "verified_date": "2026-11-14T23:59:04.715754+08:00",
+  "guide": "AGENTS.md",
+  "defaults": {
+    "application": "/Applications/拾页资料库.app",
+    "python": "/Applications/拾页资料库.app/Contents/Resources/python/bin/python3",
+    "data": "~/Library/Application Support/拾页资料库",
+    "installed_kit": "/path/to/agent-kit",
+    "ingest_cli": "/Applications/拾页资料库.app/Contents/Resources/runtime/agent_ingest.py"
+  },
+  "requirements": {
+    "http_cli_require_running_app": true,
+    "extra_dependencies": [],
+    "database_access_by_kit": false,
+    "third_party_agent_autodiscovery_guaranteed": false,
+    "search_read_passage_require_explicit_profile": true,
+    "writes_require_user_task_authorization": true,
+    "self_test_requires_running_app": false
+  },
+  "authentication": {
+    "reuse_client": "agent_ingest.Client(data)",
+    "descriptor": "<actual-data>/runtime.json",
+    "origin": "http://127.0.0.1:<dynamic-port>",
+    "header": "X-Vault-Token",
+    "credential_scope": "local library owner, not a restricted read-only credential",
+    "never_publish": [
+      "token",
+      "runtime.json contents"
+    ],
+    "url_token_allowed": false
+  },
+  "helper": {
+    "script": "shiyue_agent.py",
+    "invocation": "<bundled-python> -B <kit>/shiyue_agent.py [--app APP] [--data DATA] COMMAND ...",
+    "global_options_before_command": true,
+    "exit_codes": {
+      "0": "success",
+      "2": "error; inspect JSON details"
+    },
+    "stdout": "one JSON object",
+    "commands": {
+      "status": "Actual data directory, app version, collections and profiles; owner operation",
+      "find": "--path ABSOLUTE_PATH; exact canonical origin path within indexed files",
+      "inspect": "--id FULL_32_HEX_ID (repeatable); owner metadata without document chunks",
+      "classify": "(--id FULL_ID ... | --receipt RECEIPT_JSON) [--collection ROOT_NAME ...] [--collection-path JSON_NAME_ARRAY ...] [--collection-id FULL_COLLECTION_ID ...] [--tag TAG ...] [--apply]",
+      "search": "--query TEXT [--limit 8] --profile ID [--collection-id ID ...] [--collection-path JSON_ARRAY ...] [--tag EXACT_TAG ...] [--direct-only] [--include-paths]",
+      "read": "--id FULL_ID [--start 0] [--limit 3] [--sha CONTENT_SHA256] [--extract EXTRACTION_SHA256] --profile AUTHORIZED_PROFILE_ID",
+      "passage": "--id FULL_ID --passage PASSAGE_ID [--context 1] --profile AUTHORIZED_PROFILE_ID",
+      "collection-create": "--name NAME [--parent-id FULL_COLLECTION_ID]",
+      "collection-move": "--id FULL_COLLECTION_ID (--parent-id FULL_COLLECTION_ID | --root)",
+      "prefer": "--id FULL_ID (--preferred-id FULL_ID | --clear) [--reason TEXT] [--apply]",
+      "self-test": "Isolated temporary library, specified --app runtime, hashes and signature verified; ignores --data; no live library connection"
+    },
+    "classify_semantics": {
+      "default": "plan only",
+      "apply": "add memberships and merge existing tags; read back to verify",
+      "receipt_guard": "complete/success/index_ready true, failure_count 0, every file current/indexed, matching current SHA",
+      "atomic_batch": false,
+      "parallel_metadata_writers": false,
+      "partial_failure_fields": [
+        "ok",
+        "applied",
+        "verified",
+        "error",
+        "completed_steps"
+      ],
+      "deletes_or_moves_originals": false,
+      "removes_existing_memberships": false
+    }
+  },
+  "ingestion": {
+    "submit": {
+      "method": "POST",
+      "path": "/api/ingest/files",
+      "fields": [
+        "paths",
+        "mode",
+        "request_id"
+      ]
+    },
+    "poll": {
+      "method": "GET",
+      "path": "/api/ingest/jobs/{job_id}"
+    },
+    "paths": "1 to 1000 explicit final regular file absolute paths; no directories or symlink files",
+    "default_mode": "in-place",
+    "alternative_mode": "managed",
+    "request_id": "1 to 120 characters; retry unchanged request with same ID; changed file version uses a new ID",
+    "success_gate": "complete == true && success == true && index_ready == true && failure_count == 0",
+    "per_file": [
+      "id",
+      "sha256",
+      "current_version",
+      "index_ready",
+      "text_indexed",
+      "text_sections",
+      "warning"
+    ],
+    "text_sections": "legacy extracted chunks with nonempty text, not passage table count or page count",
+    "index_ready_is_full_text": false,
+    "new_single_file_sources_auto_watch": false,
+    "modifies_ai_profile_configuration": false,
+    "effective_visibility": "existing all_files and collection membership policies may make newly indexed or classified files readable"
+  },
+  "metadata_routes": {
+    "assign_collection": {
+      "method": "POST",
+      "path": "/api/collection/assign",
+      "body_example": {
+        "name": "01_易学",
+        "ids": [
+          "<full-file-id>"
+        ],
+        "action": "add"
+      },
+      "semantics": "create or reuse root, child by parent_id, or full path array; add memberships atomically per request"
+    },
+    "edit_tags": {
+      "method": "POST",
+      "path": "/api/edit",
+      "body_example": {
+        "id": "<full-file-id>",
+        "tags": [
+          "<existing-tag>",
+          "<new-tag>"
+        ]
+      },
+      "semantics": "replaces whole tag list; read and merge existing tags first; max 50 tags of 80 characters; no cross-client CAS"
+    }
+  },
+  "read_routes": {
+    "profiles": "/api/knowledge/profiles",
+    "search": "/api/knowledge/search?profile=PROFILE_ID&q=QUERY&limit=8",
+    "read": "/api/knowledge/read?profile=PROFILE_ID&id=FILE_ID&start=0&limit=3&expected_sha=SHA&expected_extract=EXTRACTION_SHA",
+    "passage": "/api/knowledge/passage?profile=PROFILE_ID&id=FILE_ID&passage=PASSAGE_ID&context=1",
+    "owner_metadata": "/api/files/{file_id}",
+    "mcp_configuration": "/api/knowledge/config?profile=PROFILE_ID"
+  },
+  "mcp": {
+    "transport": "stdio",
+    "command": "/Applications/拾页资料库.app/Contents/Resources/python/bin/python3",
+    "args_template": [
+      "-B",
+      "/Applications/拾页资料库.app/Contents/Resources/runtime/knowledge_mcp.py",
+      "--data",
+      "<actual-data-absolute-path>",
+      "--profile",
+      "<authorized-profile-id>"
+    ],
+    "tools": [
+      "search_library",
+      "read_document",
+      "read_passage",
+      "library_info"
+    ],
+    "read_only": true,
+    "native_window_required": false,
+    "client_configuration_is_client_specific": true
+  },
+  "completion_report": [
+    "request_id",
+    "job_id",
+    "file_id",
+    "origin_path",
+    "sha256",
+    "mode",
+    "index_ready",
+    "text_indexed",
+    "actual_collections",
+    "actual_tags",
+    "query_and_readback_evidence",
+    "selected_profile",
+    "extraction_sha256"
+  ],
+  "limitations": [
+    "physical folders, sources, collections and tags are different",
+    "a CSV checklist is not applied collection membership",
+    "index SHA and availability do not prove the current disk bytes match",
+    "read next_start and chunks[].truncated must be checked",
+    "no search hit does not prove a file is absent",
+    "same title, different carriers and revised HTML are not automatically byte duplicates",
+    "profile limits tool results, not OS filesystem access"
+  ],
+  "collections": {
+    "max_depth": 9,
+    "root_depth": 1,
+    "same_name_rule": "unique among siblings, ASCII case-insensitive",
+    "tree": "GET /api/collections",
+    "create": "POST /api/collection/create {name,parent_id?}",
+    "move": "POST /api/collection/move {collection_id,parent_id: null or ID}",
+    "path_assignment": "POST /api/collection/assign {path:[root,...,leaf],ids:[...],action:add}",
+    "list_fields": [
+      "id",
+      "name",
+      "parent_id",
+      "depth",
+      "path",
+      "path_label",
+      "direct_count",
+      "count",
+      "child_count"
+    ],
+    "filter": "GET /api/files?collection=ID&include_children=1 or 0",
+    "count": "unique files in this branch",
+    "profile_inherits_descendants": true,
+    "delete": "deletes selected branch collections and memberships, files remain in library"
+  },
+  "write_compatibility": {
+    "versions": "1.9.x / 1.10.x",
+    "required_capabilities": {
+      "classify": 1,
+      "collection_tree": 1,
+      "collection_move": 1,
+      "file_preferences": 1
+    },
+    "unknown_or_missing": "read only"
+  },
+  "knowledge_filters": {
+    "http_route": "/api/knowledge/search",
+    "array_query_fields": "collection_ids, collection_paths, tags encoded as JSON",
+    "booleans": [
+      "include_children",
+      "include_paths"
+    ],
+    "collections": "OR",
+    "tags": "exact AND",
+    "scope": "intersection with profile before ranking in all retrieval channels",
+    "max_results": 20,
+    "pagination": false,
+    "result_metadata": [
+      "collections",
+      "origin_path (opt-in)",
+      "preferred_file (explicit, active and in scope)"
+    ]
+  },
+  "receipt_archive": "<project>/00_索引/回执/<request_id>.json or an existing unobserved build record folder; do not overwrite or index by default"
+}

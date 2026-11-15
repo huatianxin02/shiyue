@@ -1,0 +1,798 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "Shiyue",
+      "version": "1.10.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "jieba",
+      "version": "0.42.1",
+      "purl": "pkg:pypi/jieba@0.42.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "055ca12f62674fafed09427f176506079bc135638a14e23e25be909131928db2"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c6/cb/18eeb235f833b726522d7ebed54f2278ce28ba9438e3135ab0278d9792a2/jieba-0.42.1.tar.gz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pypdf",
+      "version": "7.1.0",
+      "purl": "pkg:pypi/pypdf@7.1.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47cca6b24bdcf4c4d65b5f7b8b972535c61710a061261e737688777cfd9a7bfb"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/ed/4c/d19f91b743c8579b67e3d8b001e095745dec5bb13a9b4b9eadc235a85d9e/pypdf-7.1.0-py3-none-any.whl"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "name": "CPython (python-build-standalone)",
+      "version": "3.13.18+20261026",
+      "licenses": [
+        {
+          "license": {
+            "id": "Python-2.0"
+          }
+        }
+      ],
+      "description": "Includes standard library and runtime dependencies; full license corpus retained in THIRD_PARTY_LICENSES.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8392b6ea51d94391befb2c31ebe75463f045d0b69dfcf5e1bb3234e1f5fa3405"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.13.18%2B20261026-aarch64-apple-darwin-install_only_stripped.tar.gz"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@asamuzakjp/css-color",
+      "version": "3.2.0",
+      "scope": "optional",
+      "purl": "pkg:npm/%40asamuzakjp/css-color@3.2.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@csstools/color-helpers",
+      "version": "5.1.0",
+      "scope": "optional",
+      "purl": "pkg:npm/%40csstools/color-helpers@5.1.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT-0"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@csstools/css-calc",
+      "version": "2.1.4",
+      "scope": "optional",
+      "purl": "pkg:npm/%40csstools/css-calc@2.1.4",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@csstools/css-color-parser",
+      "version": "3.1.0",
+      "scope": "optional",
+      "purl": "pkg:npm/%40csstools/css-color-parser@3.1.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@csstools/css-parser-algorithms",
+      "version": "3.0.5",
+      "scope": "optional",
+      "purl": "pkg:npm/%40csstools/css-parser-algorithms@3.0.5",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@csstools/css-tokenizer",
+      "version": "3.0.4",
+      "scope": "optional",
+      "purl": "pkg:npm/%40csstools/css-tokenizer@3.0.4",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "agent-base",
+      "version": "7.1.4",
+      "scope": "optional",
+      "purl": "pkg:npm/agent-base@7.1.4",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cssstyle",
+      "version": "4.6.0",
+      "scope": "optional",
+      "purl": "pkg:npm/cssstyle@4.6.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "data-urls",
+      "version": "5.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/data-urls@5.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "debug",
+      "version": "4.4.3",
+      "scope": "optional",
+      "purl": "pkg:npm/debug@4.4.3",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "decimal.js",
+      "version": "10.6.0",
+      "scope": "optional",
+      "purl": "pkg:npm/decimal.js@10.6.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "entities",
+      "version": "6.0.1",
+      "scope": "optional",
+      "purl": "pkg:npm/entities@6.0.1",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-2-Clause"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "html-encoding-sniffer",
+      "version": "4.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/html-encoding-sniffer@4.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "http-proxy-agent",
+      "version": "7.0.2",
+      "scope": "optional",
+      "purl": "pkg:npm/http-proxy-agent@7.0.2",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "https-proxy-agent",
+      "version": "7.0.6",
+      "scope": "optional",
+      "purl": "pkg:npm/https-proxy-agent@7.0.6",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "iconv-lite",
+      "version": "0.6.3",
+      "scope": "optional",
+      "purl": "pkg:npm/iconv-lite@0.6.3",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-potential-custom-element-name",
+      "version": "1.0.1",
+      "scope": "optional",
+      "purl": "pkg:npm/is-potential-custom-element-name@1.0.1",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jsdom",
+      "version": "26.1.0",
+      "scope": "optional",
+      "purl": "pkg:npm/jsdom@26.1.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lru-cache",
+      "version": "10.4.3",
+      "scope": "optional",
+      "purl": "pkg:npm/lru-cache@10.4.3",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ms",
+      "version": "2.1.3",
+      "scope": "optional",
+      "purl": "pkg:npm/ms@2.1.3",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nwsapi",
+      "version": "2.2.28",
+      "scope": "optional",
+      "purl": "pkg:npm/nwsapi@2.2.28",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "parse5",
+      "version": "7.3.0",
+      "scope": "optional",
+      "purl": "pkg:npm/parse5@7.3.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "punycode",
+      "version": "2.3.1",
+      "scope": "optional",
+      "purl": "pkg:npm/punycode@2.3.1",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rrweb-cssom",
+      "version": "0.8.0",
+      "scope": "optional",
+      "purl": "pkg:npm/rrweb-cssom@0.8.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "scope": "optional",
+      "purl": "pkg:npm/safer-buffer@2.1.2",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "saxes",
+      "version": "6.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/saxes@6.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "ISC"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "symbol-tree",
+      "version": "3.2.4",
+      "scope": "optional",
+      "purl": "pkg:npm/symbol-tree@3.2.4",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tldts",
+      "version": "6.1.86",
+      "scope": "optional",
+      "purl": "pkg:npm/tldts@6.1.86",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tldts-core",
+      "version": "6.1.86",
+      "scope": "optional",
+      "purl": "pkg:npm/tldts-core@6.1.86",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tough-cookie",
+      "version": "5.1.2",
+      "scope": "optional",
+      "purl": "pkg:npm/tough-cookie@5.1.2",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tr46",
+      "version": "5.1.1",
+      "scope": "optional",
+      "purl": "pkg:npm/tr46@5.1.1",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "w3c-xmlserializer",
+      "version": "5.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/w3c-xmlserializer@5.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "webidl-conversions",
+      "version": "7.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/webidl-conversions@7.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-2-Clause"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "whatwg-encoding",
+      "version": "3.1.1",
+      "scope": "optional",
+      "purl": "pkg:npm/whatwg-encoding@3.1.1",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "whatwg-mimetype",
+      "version": "4.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/whatwg-mimetype@4.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "whatwg-url",
+      "version": "14.2.0",
+      "scope": "optional",
+      "purl": "pkg:npm/whatwg-url@14.2.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ws",
+      "version": "8.22.0",
+      "scope": "optional",
+      "purl": "pkg:npm/ws@8.22.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xml-name-validator",
+      "version": "5.0.0",
+      "scope": "optional",
+      "purl": "pkg:npm/xml-name-validator@5.0.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xmlchars",
+      "version": "2.2.0",
+      "scope": "optional",
+      "purl": "pkg:npm/xmlchars@2.2.0",
+      "properties": [
+        {
+          "name": "shiyue:usage",
+          "value": "development-test-only"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    }
+  ]
+}

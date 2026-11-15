@@ -1,0 +1,17 @@
+{
+  "version": "1.3.0",
+  "files": {
+    "AGENTS.md": "9c228db3a1a5ed1ecaaf8557ddbcd1196877f2cc90cd5e57fa435eb91344e921",
+    "self_test.py": "f0e12062495162f765c2cf78210edae8f75e7122c76ffe3f4887a444543aa54b",
+    "shiyue_agent.py": "ab17d71eb0013a5884ad0132203d5d131ceee3737a07f4c985e0ab6754119bf5",
+    "tests/test_agent_kit.py": "fde5f8fc2886274c1f16e125e61a8983df30c744e796c8688985f490f61227c1",
+    "使用说明.md": "f8409c051fbef2b251829591408d3cf8b73dff979f21480b9c24e85d93884e60",
+    "接口契约.json": "7f2948778400c726f4cf666762f770ea114740408fb5fc0555fe9de44f18f8b8",
+    "给Agent的任务开头.txt": "1eba67607804bd18bee91b98ff00a7d201a04c5da0064cf05f98c8a279a102b8"
+  },
+  "excludes": [
+    "checksums.json",
+    "验证结果.json",
+    "user-added files"
+  ]
+}

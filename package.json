@@ -1,0 +1,12 @@
+{
+  "name": "shiyue-local-vault",
+  "version": "1.10.0",
+  "private": true,
+  "description": "Development-only DOM tests; the desktop app has no Node dependency.",
+  "scripts": {
+    "test": "node --test tests/ui.test.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}

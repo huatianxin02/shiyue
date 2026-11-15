@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="local.shiyue.vault">
+
+    <!--
+        No INTERNET permission on purpose. A pack is the only way content arrives,
+        and it arrives through the system file picker, so the app has no way to
+        send anything anywhere.
+    -->
+
+    <!--
+        Android 11+ hides other apps from queries unless they are declared here.
+        Without this, resolveActivity() cannot see a browser, so HTML would always
+        fall through to the system chooser instead of opening in the browser.
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="text/html" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="*/*" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Shiyue">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/zip" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ReaderActivity"
+            android:exported="false" />
+
+        <!--
+            Read-only, not exported: another app can read exactly the one object the
+            user handed it, through a URI grant attached to that intent.
+        -->
+        <provider
+            android:name=".ShareProvider"
+            android:authorities="local.shiyue.vault.share"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+    </application>
+</manifest>
